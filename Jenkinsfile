@@ -1,6 +1,5 @@
 #!groovy
-pipeline {
-    agent none
+node {
     stages {
         stage('Test') {
             steps {
