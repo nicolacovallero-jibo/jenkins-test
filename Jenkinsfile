@@ -1,16 +1,9 @@
-pipeline {
-    agent none
-    stages {
-        stage('Test') {
-            steps {
-                sh 'echo test'
-            }
-        }
-        stage('Removing merged branch') {
-            steps {
-               sh ' git push origin --delete ${GITHUB_PR_SOURCE_BRANCH}'
-            }
-        }
+node {
+    stage('Test') {
+        echo 'Test'
+    }
+    stage('Removing merged branch') {
+      git push origin --delete ${GITHUB_PR_SOURCE_BRANCH}
     }
 }
 
