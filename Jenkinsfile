@@ -7,7 +7,7 @@ node {
 
    setBuildStatus("Complete","SUCCESS","${env.JOB_BASE_NAME}","${env.GITHUB_PR_HEAD_SHA}",url) 
 
-   sleep 10 
+   sleep 10     
 
    setBuildStatus("Complete","FAILURE","${env.JOB_BASE_NAME}","${env.GITHUB_PR_HEAD_SHA}",url) 
 
