@@ -24,7 +24,7 @@ def setBuildStatus(String message, String state, String context, String sha, Str
         statusBackrefSource: [$class: "ManuallyEnteredBackrefSource", backref: "${BUILD_URL}flowGraphTable/"],
         statusResultSource: [$class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
     ]); 
-}
+} 
            
         
     
