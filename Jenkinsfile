@@ -4,7 +4,7 @@ node {
    def url = sh(returnStdout: true, script: 'git config remote.origin.url').trim()
 
    sleep 10
-
+   
    setBuildStatus("Complete","SUCCESS","${env.JOB_BASE_NAME}","${env.GITHUB_PR_HEAD_SHA}",url) 
 
    sleep 10     
