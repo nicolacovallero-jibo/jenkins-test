@@ -25,3 +25,4 @@ def setBuildStatus(String message, String state, String context, String sha, Str
         statusResultSource: [$class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
     ]); 
 }
+   
