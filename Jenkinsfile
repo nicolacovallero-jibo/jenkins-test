@@ -12,7 +12,7 @@ node {
    setBuildStatus("Complete","FAILURE","${env.JOB_BASE_NAME}","${env.GITHUB_PR_HEAD_SHA}",url) 
 
           
-}      
+}          
 
 def setBuildStatus(String message, String state, String context, String sha, String repoUrl) {
     step([
