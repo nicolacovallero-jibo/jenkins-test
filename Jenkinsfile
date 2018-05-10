@@ -1,17 +1,18 @@
-#!groovy
-node {  
-   checkout scm
-   def url = sh(returnStdout: true, script: 'git config remote.origin.url').trim()
-
-   sleep 10
-   
-   setBuildStatus("Complete","SUCCESS","${env.JOB_BASE_NAME}","${env.GITHUB_PR_HEAD_SHA}",url) 
-
-   sleep 10 
-
-   setBuildStatus("Complete","FAILURE","${env.JOB_BASE_NAME}","${env.GITHUB_PR_HEAD_SHA}",url) 
-
-
+pipeline {  
+   agent any 
+   stages{
+      stage('Checking for mergeability')  {
+         steps{
+            script{
+             if ("${GITHUB_PR_MERGEABLE}" != "true"){
+               BODY+="\n\nBranch ${GITHUB_PR_SOURCE_BRANCH} cannot be automatically merged to ${GITHUB_PR_TARGET_BRANCH}, the job has been aborted."
+               currentBuild.result = 'ABORTED'
+               error("Branch ${GITHUB_PR_SOURCE_BRANCH} cannot be automatically merged to ${GITHUB_PR_TARGET_BRANCH}, the job has been aborted.")
+             }
+            }
+         }
+      }
+   }
 } 
 
 def setBuildStatus(String message, String state, String context, String sha, String repoUrl) {
